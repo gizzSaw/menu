@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: hsl(144, 20%, 92%);
+}
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.header {
+    padding: 15px 0;
+}
+
+.header-logo img {
+    width: 60px;
+    height: auto;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-toggler {
+    width: 60px;
+    color: hsl(0, 0%, 10%);
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden; /* скрыть то что вылезло */
+    text-transform: uppercase;
+    z-index: 11;
+}
+
+.nav-toggler span {
+    position: relative;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.nav-toggler.active span {
+    transform: translateY(-100%);
+}
+
+.nav-toggler span::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    color: hsl(0, 0%, 90%);
+}
+
+.nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: hsl(144, 20%, 10%);
+    z-index: 10;
+    display: flex;
+    transition: all 0.5 ease;
+    visibility: hidden;
+    opacity: 0;
+}
+.nav.open {
+    visibility: visible;
+    opacity: 1;
+}
+.nav ul{
+    margin: auto;
+    list-style: none;
+    padding: 80px 15px;
+}
+
+.nav li {
+    text-align: center;
+    line-height: 1;
+    overflow-y: hidden;
+}
+
+.nav li + li {
+    margin-top: 30px;
+}
+
+.nav a {
+    color: hsl(144, 50%, 55%);
+    display: inline-block;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0 15px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: color 0.6s cubic-bezier(.97, .02, .01, .98),
+                transform 1s ease,
+                opacity 0.3s ease;                    
+}
+.nav.open a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s, calc(0.03s * var(--i));
+}
+.nav a:hover {
+    color: hsl(0, 0%, 90%);
+}
+.nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background-color: hsl(0, 0%, 90%);
+    width: 0;
+    transition: width 0.6s cubic-bezier(.97, .02, .01, .98);
+}
+
+.nav a:hover::before {
+    width: 100%;
+}
+
+
